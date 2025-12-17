@@ -54,7 +54,7 @@ async def run_research_agent(topic: str = None) -> str:
     # bedrock/openai.gpt-oss-120b-1:0 for OpenAI OSS models
     # bedrock/converse/us.anthropic.claude-sonnet-4-20250514-v1:0 for Claude Sonnet 4
     # NOTE that nova-pro is needed to support tools and MCP servers; nova-lite is not enough - thank you Yuelin L.!
-    MODEL = "bedrock/us.amazon.nova-pro-v1:0"
+    MODEL = "bedrock/amazon.nova-pro-v1:0"
     model = LitellmModel(model=MODEL)
 
     # Create and run the agent with MCP server
@@ -166,11 +166,11 @@ async def test_bedrock():
         actual_region = session.region_name
 
         # Try to create Bedrock client explicitly in us-west-2
-        client = boto3.client("bedrock-runtime", region_name="us-west-2")
+        client = boto3.client("bedrock-runtime", region_name="us-west-1")
 
         # Debug: Try to list models to verify connection
         try:
-            bedrock_client = boto3.client("bedrock", region_name="us-west-2")
+            bedrock_client = boto3.client("bedrock", region_name="us-west-1")
             models = bedrock_client.list_foundation_models()
             openai_models = [
                 m["modelId"] for m in models["modelSummaries"] if "openai" in m["modelId"].lower()

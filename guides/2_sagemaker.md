@@ -107,6 +107,10 @@ cd ../../backend
 aws sagemaker-runtime invoke-endpoint --endpoint-name alex-embedding-endpoint --content-type application/json --body fileb://vectorize_me.json --output json /dev/stdout
 ```
 
+windows 
+
+""
+
 You'll see a JSON array with 384 floating-point numbers - that's the text "vectorize me" converted into a vector embedding!
 
 **Note**: The first request to a serverless endpoint can take 10-60 seconds (cold start). Subsequent requests will be much faster.
