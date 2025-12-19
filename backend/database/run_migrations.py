@@ -3,11 +3,14 @@
 Simple migration runner that executes statements one by one
 """
 
+
 import os
 import boto3
 from pathlib import Path
 from botocore.exceptions import ClientError
 from dotenv import load_dotenv
+import sys
+sys.stdout.reconfigure(encoding="utf-8")
 
 # Load environment variables
 load_dotenv(override=True)
